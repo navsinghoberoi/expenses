@@ -2,7 +2,11 @@ package com.tracker.expenses.model;
 
 
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.BatchSize;
 
 import java.time.LocalDate;
@@ -13,9 +17,15 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty(message ="Description cannot be empty")
+    @Size(min = 2,max = 70)
     private String description;
+    @Min(1)
     private double amount;
+    @NotEmpty(message = "Category cannot be empty")
     private String category;
+    @NotNull
     private LocalDate date;
 
     public Expense() {
