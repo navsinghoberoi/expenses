@@ -1,21 +1,6 @@
 # Expenses
 
-App for tracking the expenses in order to check category spends.
-
-## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
+App for tracking the expenses in order to check total and category spends.
 
 ## Contributing
 
