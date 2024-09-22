@@ -1,13 +1,12 @@
 package com.tracker.expenses.model;
 
 
+import com.tracker.expenses.util.Category;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.hibernate.annotations.BatchSize;
 
 import java.time.LocalDate;
 
@@ -18,13 +17,17 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message ="Description cannot be empty")
-    @Size(min = 2,max = 70)
+    @NotEmpty(message = "Description cannot be empty")
+    @Size(min = 2, max = 70)
     private String description;
+
     @Min(1)
     private double amount;
-    @NotEmpty(message = "Category cannot be empty")
-    private String category;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category")
+    private Category category;
+
     @NotNull
     private LocalDate date;
 
@@ -39,20 +42,11 @@ public class Expense {
         this.amount = amount;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Expense(String description, double amount, String category, LocalDate date) {
-        this.description = description;
-        this.amount = amount;
-        this.category = category;
-        this.date = date;
-    }
 
     public Long getId() {
         return id;
@@ -66,7 +60,18 @@ public class Expense {
         return amount;
     }
 
-    public String getCategory() {
+    public Expense(String description, double amount, Category category, LocalDate date) {
+        this.description = description;
+        this.amount = amount;
+        this.category = category;
+        this.date = date;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Category getCategory() {
         return category;
     }
 

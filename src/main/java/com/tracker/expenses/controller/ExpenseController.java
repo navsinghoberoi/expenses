@@ -3,6 +3,7 @@ package com.tracker.expenses.controller;
 
 import com.tracker.expenses.model.Expense;
 import com.tracker.expenses.service.ExpenseService;
+import com.tracker.expenses.util.Category;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class ExpenseController {
     }
 
     @GetMapping()
-    public List<Expense> getExpensesByCategory(@RequestParam("category") String category) {
+    public List<Expense> getExpensesListByCategory(@RequestParam("category") Category category) {
         return expenseService.getExpensesByCategory(category);
     }
 

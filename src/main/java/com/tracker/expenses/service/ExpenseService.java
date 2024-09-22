@@ -2,6 +2,7 @@ package com.tracker.expenses.service;
 
 import com.tracker.expenses.model.Expense;
 import com.tracker.expenses.repository.ExpenseRepository;
+import com.tracker.expenses.util.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
 
-    public List<Expense> getExpensesByCategory(String category) {
+    public List<Expense> getExpensesByCategory(Category category) {
         return expenseRepository.findByCategory(category);
     }
 
