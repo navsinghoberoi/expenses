@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/expenses")
@@ -25,6 +26,11 @@ public class ExpenseController {
     @GetMapping("/total")
     public double getTotalExpenses() {
         return expenseService.getTotalExpenses();
+    }
+
+    @GetMapping("/totalCategoryWise")
+    public Map<Category, Double> getTotalExpensesCategoryWise() {
+        return expenseService.getTotalExpensesByCategory();
     }
 
     @GetMapping()

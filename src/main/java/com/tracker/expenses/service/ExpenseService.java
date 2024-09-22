@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ExpenseService {
@@ -65,5 +64,16 @@ public class ExpenseService {
         } else {
             throw new RuntimeException("Expense not found via id{}:" + id);
         }
+    }
+
+    public Map<Category, Double> getTotalExpensesByCategory() {
+        List<Object[]> results = expenseRepository.findTotalAmountGroupedByCategory();
+        Map<Category, Double> totals = new HashMap<>();
+        for (Object[] result:results){
+            Category category = Category.valueOf((String) result[0]);
+            Double amount = (Double) result[1];
+            totals.put(category,amount);
+        }
+        return totals;
     }
 }
