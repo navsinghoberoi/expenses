@@ -6,7 +6,6 @@ import com.tracker.expenses.util.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -23,17 +22,16 @@ public class ExpenseService {
         return expenseRepository.findByCategory(category);
     }
 
-//    public List<Expense> getExpensesByCategoryInDateRange(String category, int month, int year) {
-//        LocalDate startDate = LocalDate.of(year, month, 1);
-//        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
-//        return expenseRepository.findByCategoryAndDate(category, startDate, endDate);
-//    }
-
-//    public List<Expense> getExpensesInDateRange(int month, int year) {
-//        LocalDate startDate = LocalDate.of(year, month, 1);
-//        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
-//        return expenseRepository.findByDateRange(startDate, endDate);
-//    }
+    public Map<Category, Double> getExpensesByYear(int year) {
+        List<Object[]> results = expenseRepository.findByYear(year);
+        Map<Category, Double> totals = new HashMap<>();
+        for (Object[] result:results){
+            Category category = Category.valueOf((String) result[0]);
+            Double amount = (Double) result[1];
+            totals.put(category,amount);
+        }
+        return totals;
+    }
 
     public double getTotalExpenses() {
         return expenseRepository.findAll().stream().mapToDouble(Expense::getAmount).sum();

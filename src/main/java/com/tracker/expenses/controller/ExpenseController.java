@@ -34,8 +34,13 @@ public class ExpenseController {
     }
 
     @GetMapping()
-    public List<Expense> getExpensesListByCategory(@RequestParam("category") Category category) {
+    public List<Expense> getExpensesByCategory(@RequestParam("category") Category category) {
         return expenseService.getExpensesByCategory(category);
+    }
+
+    @GetMapping("/year")
+    public Map<Category, Double> getExpensesByYear(@RequestParam("year") int year) {
+        return expenseService.getExpensesByYear(year);
     }
 
     @DeleteMapping("/{id}")
