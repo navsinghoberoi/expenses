@@ -25,10 +25,10 @@ public class ExpenseService {
     public Map<Category, Double> getExpensesByYear(int year) {
         List<Object[]> results = expenseRepository.findByYear(year);
         Map<Category, Double> totals = new HashMap<>();
-        for (Object[] result:results){
+        for (Object[] result : results) {
             Category category = Category.valueOf((String) result[0]);
             Double amount = (Double) result[1];
-            totals.put(category,amount);
+            totals.put(category, amount);
         }
         return totals;
     }
@@ -67,10 +67,21 @@ public class ExpenseService {
     public Map<Category, Double> getTotalExpensesByCategory() {
         List<Object[]> results = expenseRepository.findTotalAmountGroupedByCategory();
         Map<Category, Double> totals = new HashMap<>();
-        for (Object[] result:results){
+        for (Object[] result : results) {
             Category category = Category.valueOf((String) result[0]);
             Double amount = (Double) result[1];
-            totals.put(category,amount);
+            totals.put(category, amount);
+        }
+        return totals;
+    }
+
+    public Map<Category, Double> getExpensesByMonth(int month, int year) {
+        List<Object[]> results = expenseRepository.findByMonth(month, year);
+        Map<Category, Double> totals = new HashMap<>();
+        for (Object[] result : results) {
+            Category category = Category.valueOf((String) result[0]);
+            Double amount = (Double) result[1];
+            totals.put(category, amount);
         }
         return totals;
     }

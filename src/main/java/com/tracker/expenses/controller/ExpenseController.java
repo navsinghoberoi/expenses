@@ -38,8 +38,11 @@ public class ExpenseController {
         return expenseService.getExpensesByCategory(category);
     }
 
-    @GetMapping("/year")
-    public Map<Category, Double> getExpensesByYear(@RequestParam("year") int year) {
+    @GetMapping(value = "/date")
+    public Map<Category, Double> getExpensesByMonthAndYear(@RequestParam(value = "month",required = false) Integer month, @RequestParam("year") int year) {
+        if (month!=null){
+            return expenseService.getExpensesByMonth(month,year);
+        }
         return expenseService.getExpensesByYear(year);
     }
 

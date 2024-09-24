@@ -11,5 +11,13 @@ public enum Category {
 
     flight,
     Flight,
-    FLIGHT
+    FLIGHT,
+
+    bills,
+    Bills,
+    BILLS,
+
+    shopping,
+    Shopping,
+    SHOPPING
 }
