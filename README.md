@@ -22,12 +22,12 @@ To start the application on the server, run the following command -
 mvn spring-boot:run
 
 # CRUD api endpoints for student application :
-POST endpoint to add expense: http://localhost:8080/api/v1/expenses <br>
-GET endpoint to get total expenses:  http://localhost:8080/api/v1/expenses/total <br>
-GET endpoint to get total expenses category wise : http://localhost:8080/api/v1/expenses?category=Food <br>
-GET endpoint to get expenses for month/year : http://localhost:8080/api/v1/expenses/date?year=2024&month=01 <br>
-DELETE endpoint to delete expense: http://localhost:8080/api/v1/expenses/{id} <br>
-PATCH endpoint to update expense: http://localhost:8080/api/v1/expenses/{id} <br>
+1. POST endpoint to add expense: http://localhost:8080/api/v1/expenses <br>
+2. GET endpoint to get total expenses:  http://localhost:8080/api/v1/expenses/total <br>
+3. GET endpoint to get total expenses category wise : http://localhost:8080/api/v1/expenses?category=Food <br>
+4. GET endpoint to get expenses for month/year : http://localhost:8080/api/v1/expenses/date?year=2024&month=01 <br>
+5. DELETE endpoint to delete expense: http://localhost:8080/api/v1/expenses/{id} <br>
+6. PATCH endpoint to update expense: http://localhost:8080/api/v1/expenses/{id} <br>
 
 # Built With :
 Spring Boot <br>
